@@ -22,6 +22,7 @@ pipeline {
 		stage('Servicio rsphp+rsmysql'){
 			steps{
 				sh 'docker-compose up -d'
+				sh 'docker-compose down'
 			}
 		}
 	}
