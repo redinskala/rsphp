@@ -16,8 +16,6 @@ services:
 
   rsphp:
     image: rsphp
-    volumes:
-      - ./code/:/var/www/html
     expose:
       - 80
     ports:
