@@ -11,5 +11,11 @@ pipeline {
 				sh 'docker images'
 			}
 		}
+		stage('Construir rsphp'){
+			steps{
+				sh 'docker image rm rsphp'
+				sh 'docker build --tag=rsphp .'
+			}
+		}
 	}
 }
