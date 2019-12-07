@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  rsmysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_DATABASE=redin
+      - MYSQL_ROOT_PASSWORD=redin1234
+      - MYSQL_ROOT_HOST=%
+    volumes:
+      - ./mysql:/var/lib/mysql
+    expose:
+      - 3306
+    ports:
+      - 3306:3306
+
+  rsphp:
+    image: rsphp
+    volumes:
+      - ./code/:/var/www/html
+    expose:
+      - 80
+    ports:
+      - 80:80
+    links:
+      - rsmysql
