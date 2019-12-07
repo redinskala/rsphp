@@ -6,5 +6,10 @@ pipeline {
                                 sh 'echo Paso 1'
                         }
                 }
+		stage('Verificando Docker'){
+			steps{
+				sh 'docker images'
+			}
+		}
 	}
 }
