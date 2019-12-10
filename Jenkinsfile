@@ -21,14 +21,18 @@ pipeline {
 				sh 'docker-compose down'
 				sh 'docker image rm rsphp'
 				sh 'docker build --tag=rsphp .'
-				dockerImage=docker.build registry + ":dev"
+				script{
+					dockerImage=docker.build registry + ":dev"
+				}
 				sh 'docker images'
 			}
 		}
 		stage('Push a DockerHub'){
 			steps{
-				docker.withRegistry('',registroID){
-					dockerImage.push()
+				script{
+					docker.withRegistry('',registroID){
+						dockerImage.push()
+					}
 				}
 			}
 		}
