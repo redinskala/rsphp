@@ -27,7 +27,7 @@ pipeline {
 		}
 		stage('Push a DockerHub'){
 			steps{
-				docker.withRegistry('',registroID,){
+				docker.withRegistry('',registroID){
 					dockerImage.push()
 				}
 			}
