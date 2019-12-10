@@ -22,7 +22,7 @@ pipeline {
 				sh 'docker image rm rsphp'
 				sh 'docker build --tag=rsphp .'
 				script{
-					dockerImage=docker.build registry + ":dev"
+					dockerImage=docker.build registro + ":dev"
 				}
 				sh 'docker images'
 			}
