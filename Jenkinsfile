@@ -32,9 +32,7 @@ pipeline {
 					docker.withRegistry('',registroID){
 						dockerImage.push()
 					}
-					docker.withRegistry('',registroID){
-						dockerImage.rm()
-					}
+				sh 'docker image rm redinskala/rsphp:dev'
 				}
 			}
 		}
