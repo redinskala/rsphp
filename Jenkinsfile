@@ -3,6 +3,7 @@ pipeline {
 		registro="redinskala/rsphp"
 		registroID="redin_DockerHub"
 		dockerImage=""
+		dockerImageLatest=""
 	}
         agent any
         stages{
@@ -22,6 +23,7 @@ pipeline {
 				script{
 					dockerImage=docker.build registro + ":$BUILD_NUMBER"
 				}
+				sh 'docker tag $registro:$BUILD_NUMBER $registro:latest'
 				sh 'docker images'
 			}
 		}
@@ -31,7 +33,10 @@ pipeline {
 					docker.withRegistry('',registroID){
 						dockerImage.push()
 					}
-				sh 'docker image rm $registro:$BUILD_NUMBER'
+					docker.withRegistry('',registroID){
+						dockerImage.push()
+					}
+				sh 'docker image rm $registro:$BUILD_NUMBER $registro:latest'
 				}
 			}
 		}
