@@ -31,7 +31,7 @@ pipeline {
 					docker.withRegistry('',registroID){
 						dockerImage.push()
 					}
-				sh 'docker image rm $registry:$BUILD_NUMBER'
+				sh 'docker image rm $registro:$BUILD_NUMBER'
 				}
 			}
 		}
