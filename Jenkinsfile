@@ -22,8 +22,8 @@ pipeline {
 				sh 'docker-compose down'
 				script{
 					dockerImage=docker.build registro + ":$BUILD_NUMBER"
+					dockerImageLatest=docker.build registro + ":latest"
 				}
-				sh 'docker tag $registro:$BUILD_NUMBER $registro:latest'
 				sh 'docker images'
 			}
 		}
