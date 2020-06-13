@@ -32,7 +32,7 @@ pipeline {
 					docker.withRegistry('',registroID){
 						dockerImage.push()
 					}
-					docker.withRegistry('',registroID{
+					docker.withRegistry('',registroID){
 						dockerImage.rm()
 					}
 				}
