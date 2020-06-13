@@ -19,9 +19,8 @@ pipeline {
 		stage('Construir rsphp'){
 			steps{
 				sh 'docker-compose down'
-				sh 'docker build --tag=rsphp .'
 				script{
-					dockerImage=docker.build registro + ":dev"
+					dockerImage=docker.build registro + ":$BUILD_NUMBER"
 				}
 				sh 'docker images'
 			}
@@ -32,7 +31,7 @@ pipeline {
 					docker.withRegistry('',registroID){
 						dockerImage.push()
 					}
-				sh 'docker image rm redinskala/rsphp:dev'
+				sh 'docker image rm $registry:$BUILD_NUMBER'
 				}
 			}
 		}
