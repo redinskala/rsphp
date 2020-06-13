@@ -34,7 +34,7 @@ pipeline {
 						dockerImage.push()
 					}
 					docker.withRegistry('',registroID){
-						dockerImage.push()
+						dockerImageLatest.push()
 					}
 				sh 'docker image rm $registro:$BUILD_NUMBER $registro:latest'
 				}
